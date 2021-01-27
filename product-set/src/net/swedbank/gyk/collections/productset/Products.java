@@ -19,7 +19,7 @@ public class Products {
 
     public static void main(String[] args) throws IOException, ParseException {
 
-        List<Reader.ProductItem> productList;
+        List<ProductItem> productList;
         try {
             productList = Reader.readProducts("products.json");
         } catch (FileNotFoundException e){
@@ -28,7 +28,7 @@ public class Products {
 
         Products products = new Products();
 
-        for(Reader.ProductItem item: productList) {
+        for(ProductItem item: productList) {
             products.addProduct(item.getId(), item.getName(), item.getSalesDate());
         }
 

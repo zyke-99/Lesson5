@@ -20,17 +20,13 @@ public class Poem {
 
         Poem poem;
 
-        try {
-            File poemFile = Paths.get(System.getProperty("user.dir"), "poem.txt").toFile();
-            Reader reader = new Reader(poemFile);
-            poem = new Poem(reader.read());
-
-        } catch (FileNotFoundException e){
-            File poemFile = Paths.get(System.getProperty("user.dir"), "poem-with-numbers", "poem.txt").toFile();
-            Reader reader = new Reader(poemFile);
-            poem = new Poem(reader.read());
-
+        File poemFile = Paths.get(System.getProperty("user.dir"), "poem.txt").toFile();
+        if(!poemFile.exists()) {
+            // Depending on workspace config, we might need to be more clear with filepath
+            poemFile = Paths.get(System.getProperty("user.dir"), "poem-with-numbers", "poem.txt").toFile();
         }
+        Reader reader = new Reader(poemFile);
+        poem = new Poem(reader.read());
 
         poem.print();
 

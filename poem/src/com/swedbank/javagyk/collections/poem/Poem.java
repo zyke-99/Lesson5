@@ -16,9 +16,13 @@ public class Poem {
     public static void main(String[] args) throws IOException {
 
         File poemFile = Paths.get(System.getProperty("user.dir"), "poem.txt").toFile();
+        if(!poemFile.exists()) {
+            // Depending on workspace config, we might need to be more clear with filepath
+            poemFile = Paths.get(System.getProperty("user.dir"), "poem-with-numbers", "poem.txt").toFile();
+        }
         Reader reader = new Reader(poemFile);
-
         Poem poem = new Poem(reader.read());
+
         poem.print();
 
     }
