@@ -29,6 +29,9 @@ public class Poem {
 
     // implement this
     public void print() {
+        for(String line : poemLines) {
+            System.out.println(line);
+        }
     }
 
 

@@ -40,17 +40,22 @@ public class Products {
 
     //implement this
     private void addProduct(String id, String name, LocalDateTime salesDate) {
+        Product temp = new Product(id, name, salesDate);
+        if(!products.contains(temp)) {
+            products.add(temp);
+        }
+        //free(temp);
     }
 
 
     //implement this
     public int numberOfProducts() {
-        return -1;
+        return (int)products.stream().distinct().count();
     }
 
     public void printAll() {
         for(Product product: products ) {
-            // implement printing here
+            System.out.println(product);
         }
     }
 
